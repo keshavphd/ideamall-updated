@@ -1,0 +1,37 @@
+/* global.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari, Edge, and Opera */
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge, and Firefox */
+  .scrollbar-none {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+.scrollBarRemove::-webkit-scrollbar{
+  width: 20px;
+}
+  .scrollBarRemove::-webkit-scrollbar{
+    width:10px;
+    @apply bg-slate-200
+  }
+  /* For Internet Explorer */
+.scrollBarRemove {
+  scrollbar-face-color: #5303a2;
+  scrollbar-track-color: #b9b9b9;
+}
+
+  .scrollBarRemove{
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: 10px; /* Firefox */
+  }
+  .scrollBarRemove::-webkit-scrollbar-thumb{
+@apply bg-orange-300 rounded-full
+  }
+
+}
