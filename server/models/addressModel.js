@@ -1,5 +1,4 @@
-import { Schema, model } from "mongoose";
-// "src":"/(.*)",
+import { model, Schema } from "mongoose";
 
 const addressSchema = new Schema(
   {

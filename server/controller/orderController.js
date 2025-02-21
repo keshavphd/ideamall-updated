@@ -107,6 +107,10 @@ const paymentOnline = async (req, res) => {
     console.log("gyh", params);
 
     const session = await Stripe.checkout.sessions.create(params);
+    const removeCartProduct = await Cart.deleteMany({ userId });
+      
+    console.log("session",session);
+    
     return res.status(200).json(session);
   } catch (error) {
     return res.status(500).json({

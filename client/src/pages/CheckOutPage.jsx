@@ -69,7 +69,9 @@ const CheckOutPage = () => {
           subTotalAmount: totalPrice,
         },
       });
-      stripePromise.redirectToCheckout({ sessionId: res.data.id });
+      const data = stripePromise.redirectToCheckout({ sessionId: res.data.id });
+      console.log("ssdfg",data);
+      
       if (fetchCartItems) {
         fetchCartItems();
       }

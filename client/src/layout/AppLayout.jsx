@@ -50,7 +50,7 @@ const AppLayout = () => {
   };
   const fetchUser = async () => {
     const userData = await getUserDetails();
-    console.log("user", userData.data.data);
+    // console.log("user", userData.data.data);
     dispatch(setUserDetails(userData.data.data));
   };
   useEffect(() => {

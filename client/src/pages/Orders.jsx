@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 const Orders = () => {
   const orders = useSelector(state=>state.orders.order)
-  // console.log(orders);
+  console.log(orders);
   
   return (<>
   <div className="px-3 py-2 mb-1 font-mono text-2xl shadow-md">Orders</div>
