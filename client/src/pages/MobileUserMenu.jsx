@@ -5,7 +5,7 @@ import { logoutUser } from '../utils/axios';
 import HorizontalLine from './HorizontalLine';
 import { logout } from '../app/userSlice';
 import toast from 'react-hot-toast';
-import UserMenu from './userMenu';
+import UserMenu from './UserMenu';
 import { RiCloseFill } from "react-icons/ri";
 
 const MobileUserMenu = () => {
