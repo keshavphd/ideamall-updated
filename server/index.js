@@ -13,7 +13,7 @@ import orderRouter from "./router/orderRouter.js"
 import database from "./utils/database.js";
 
 
-const PORT = 2000;
+const PORT = 8080;
 const app = express();
 
 const corsOptions = {
