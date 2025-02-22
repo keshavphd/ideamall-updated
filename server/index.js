@@ -12,7 +12,7 @@ import addressRouter from "./router/addressRouter.js";
 import orderRouter from "./router/orderRouter.js";
 import database from "./utils/database.js";
 
-const PORT = 2000 || process.env.PORT;
+const PORT = process.env.PORT;
 const app = express();
 
 const corsOptions = {
