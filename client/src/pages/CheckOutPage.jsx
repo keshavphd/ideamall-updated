@@ -78,6 +78,7 @@ const CheckOutPage = () => {
       if(fetchORder){
         fetchORder()
       }
+      toast.dismiss();
     } catch (error) {
       AxiosToastError(error);
     }
