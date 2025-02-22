@@ -21,7 +21,7 @@ import {
 import GlobalProvider, { useGlobalContext } from "../provider/GlobalProvider";
 import { FaShoppingCart } from "react-icons/fa";
 import DisplayPriceinRuppee from "../pages/DisplayPriceinRuppee";
-import DisplayMobileCart from "../pages/displayMobileCart";
+import DisplayMobileCart from "../pages/DisplayMobileCart";
 
 const AppLayout = () => {
   const dispatch = useDispatch();
