@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import UserMenu from "./userMenu";
+import UserMenu from "./UserMenu";
 import { Link, Outlet } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
 import AxiosToastError from "../utils/AxiosToastError";
