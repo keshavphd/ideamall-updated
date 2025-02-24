@@ -1,11 +1,6 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import { logoutUser } from '../utils/axios';
-import HorizontalLine from './HorizontalLine';
-import { logout } from '../app/userSlice';
-import toast from 'react-hot-toast';
-import UserMenu from './userMenu';
+import { useNavigate } from 'react-router-dom';
+import UserMenu from './UserMenu';
 import { RiCloseFill } from "react-icons/ri";
 
 const MobileUserMenu = () => {

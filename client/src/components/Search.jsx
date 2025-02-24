@@ -17,7 +17,6 @@ const Search = () => {
     const isSearch = location.pathname === "/search";
     setIsSearchPage(isSearch);
   }, [location]);
-console.log("search-useMobile",isMobile);
 
   const redirectToSearchPage = () => {
     navigate("/search");
@@ -27,7 +26,6 @@ console.log("search-useMobile",isMobile);
     const value = e.target.value;
     const urls = `/search?q=${value}`;
     navigate(urls);
-    console.log(value);
   };
 
   return (

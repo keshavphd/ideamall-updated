@@ -6,6 +6,7 @@ import AxiosToastError from "../utils/AxiosToastError";
 import toast from "react-hot-toast";
 import { handleAddAddress } from "../app/addressSlice";
 import { setOredrs } from "../app/orderSlice";
+import UsrLoggedIn from "../pages/UsrLoggedIn";
 
 export const GlobleContxt = createContext(null);
 
@@ -26,7 +27,7 @@ const GlobalProvider = ({ children }) => {
         dispatch(handleAddCart(res.data.data));
       }
     } catch (error) {
-      console.log(error);
+      console.log("");
     }
   };
 
@@ -49,6 +50,7 @@ const GlobalProvider = ({ children }) => {
       AxiosToastError(error);
     }
   };
+  const loggedIn = UsrLoggedIn();
 
   const deleteCartQuantitys = async (crtId) => {
     try {
@@ -79,8 +81,7 @@ const GlobalProvider = ({ children }) => {
       console.log(error);
     }
   };
-
-  const handleLogout = () => {
+  const handlLogout = () => {
     localStorage.clear();
     dispatch(handleAddCart([]));
   };
@@ -98,15 +99,16 @@ const GlobalProvider = ({ children }) => {
       console.log(error);
     }
   };
+const value = localStorage.getItem("accessToken");
 
   useEffect(() => {
-    if (user.name) {
+    if (value != null) {
       fetchORder();
       fetchCartItems();
-      handleLogout();
+      // handleLogout();
       fetchAllAddress();
     }
-  }, [user]);
+  }, [value]);
 
   useEffect(() => {
     const quantity = cartItem.reduce((prev, curr) => {
@@ -130,6 +132,7 @@ const GlobalProvider = ({ children }) => {
         deleteCartQuantitys,
         totalPrice,
         fetchORder,
+        handlLogout,
         fetchAllAddress,
         totalQuantity,
       }}

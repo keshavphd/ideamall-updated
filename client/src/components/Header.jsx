@@ -7,8 +7,7 @@ import useMobile from "../hooks/useMobile";
 import { PiShoppingCartSimpleFill } from "react-icons/pi";
 import { useSelector } from "react-redux";
 import { VscTriangleDown, VscTriangleUp } from "react-icons/vsc";
-import UserMenu from "../pages/userMenu";
-import UserProfilePhotoEdit from "../pages/userProfilePhotoEdit";
+import UserMenu from "../pages/UserMenu";
 import DisplayPriceinRuppee from "../pages/DisplayPriceinRuppee";
 import { useGlobalContext } from "../provider/GlobalProvider";
 import DisplayCart from "../pages/DisplayCart";
@@ -41,7 +40,6 @@ const Header = () => {
   };
 
   const isSearchPage = location.pathname === "/search";
-console.log("dfff",isSearchPage);
 
   useEffect(() => {
     const handleOutsideClick = (e) => {
@@ -55,7 +53,6 @@ console.log("dfff",isSearchPage);
       document.removeEventListener("click", handleOutsideClick);
     };
   }, [content]);
-  console.log("isMobile", isMobile);
   // useEffect(()=>{
   //  const quantity = cartItems.reduce((prev,curr)=>{
   //      return prev+curr.quantity

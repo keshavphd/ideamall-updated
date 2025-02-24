@@ -7,7 +7,6 @@ import Loading from "./Loading";
 import { createColumnHelper } from "@tanstack/react-table";
 import DisplaySubCategory from "./DisplaySubCategory ";
 import ViewImage from "./ViewImage";
-import { setAllSubCategory } from "../app/productSlice";
 
 const SubCategory = () => {
   const [addSubCategory, setAddSubCategory] = useState(false);
@@ -16,7 +15,6 @@ const SubCategory = () => {
   const [viewImage, setViewImage] = useState(false);
   const [imageData, setImageData] = useState();
   const columnHelper = createColumnHelper();
-  const dispatch = useDispatch();
   const handleSubCategory = () => {
     setAddSubCategory(true);
   };

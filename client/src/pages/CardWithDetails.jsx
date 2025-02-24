@@ -2,10 +2,6 @@ import React, { useState } from "react";
 import DisplayPriceinRuppee from "./DisplayPriceinRuppee.jsx";
 import { reduceUrl } from "./SortUrl.jsx";
 import { Link } from "react-router-dom";
-import SummaryAPI, { Axios } from "../utils/axios.jsx";
-import AxiosToastError from "../utils/AxiosToastError.jsx";
-import toast from "react-hot-toast";
-import { useGlobalContext } from "../provider/GlobalProvider.jsx";
 import AddtoCart from "./AddtoCart.jsx";
 const CardWithDetails = ({ data }) => {
   const url = `/product/${reduceUrl(data.name)}-${data._id}`;

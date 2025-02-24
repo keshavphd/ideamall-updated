@@ -3,8 +3,7 @@ import { IoClose } from "react-icons/io5";
 import SummaryAPI, { Axios } from "../utils/axios";
 import { useState } from "react";
 import AxiosToastError from "../utils/AxiosToastError";
-import { useDispatch } from "react-redux";
-import { setAllCategory } from "../app/productSlice.jsx";
+
 
 const EditCategory = ({ close, categoryData }) => {
   const [loading, setLoading] = useState(false);

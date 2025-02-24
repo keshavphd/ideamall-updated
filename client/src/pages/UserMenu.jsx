@@ -6,19 +6,22 @@ import { logoutUser } from "../utils/axios";
 import toast from "react-hot-toast";
 import { logout } from "../app/userSlice";
 import { BsBoxArrowUpRight } from "react-icons/bs";
+import { useGlobalContext } from "../provider/GlobalProvider";
 const UserMenu = ({ close }) => {
   const navigate = useNavigate();
   const user = useSelector((state) => state?.user);
   const dispatch = useDispatch();
+  const { handlLogout } = useGlobalContext();
   const handleLogout = async () => {
     const response = await logoutUser();
-    console.log(response);
+    // console.log(response);
     if (response.data.success) {
       if (close) {
         close();
       }
       dispatch(logout());
       localStorage.clear();
+      handlLogout();
       toast.success(response.data.msg);
       navigate("/");
     }
@@ -32,42 +35,55 @@ const UserMenu = ({ close }) => {
     <div>
       <div className="font-semibold">My Account </div>
       <div className="flex flex-row items-center content-center gap-2">
-        <div className="hidden lg:block">{(user.name).slice(0,12)+"..."}{user.role == "ADMIN" ? (<span className="text-orange-500">(Admin)</span>):(<p></p>)}</div>
-        <div className="lg:hidden">{(user.name).slice(0,50)}{user.role == "ADMIN" ? (<span>(Admin)</span>):(<p></p>)}</div>
+        <div className="hidden lg:block">
+          {user.name.slice(0, 12) + "..."}
+          {user.role == "ADMIN" ? (
+            <span className="text-orange-500">(Admin)</span>
+          ) : (
+            <p></p>
+          )}
+        </div>
+        <div className="lg:hidden">
+          {user.name.slice(0, 50)}
+          {user.role == "ADMIN" ? <span>(Admin)</span> : <p></p>}
+        </div>
         <button onClick={gotoProfile} className="font-bold">
           <BsBoxArrowUpRight />
         </button>
       </div>
       <HorizontalLine />
       <div className="flex flex-col py-1 ">
-      {user.role == "ADMIN" ? (
-        <>
-        <Link
-        to="/dashboard/product"
-        className="py-1 hover:bg-orange-600 hover:text-white "
-      >
-        Product
-      </Link>
-      <Link
-        to="/dashboard/upload-product"
-        className="py-1 hover:bg-orange-600 hover:text-white "
-      >
-        Upload Product
-      </Link>
-      <Link
-        to="/dashboard/category"
-        className="py-1 hover:bg-orange-600 hover:text-white "
-      >
-        Category
-      </Link>
-      <Link
-        to="/dashboard/sub-category"
-        className="py-1 hover:bg-orange-600 hover:text-white "
-      >
-       Sub-Category
-      </Link>
-      </>):(<></>)}
-      
+        {user.role == "ADMIN" ? (
+          <>
+            <Link
+              to="/dashboard/product"
+              className="py-1 hover:bg-orange-600 hover:text-white "
+            >
+              Product
+            </Link>
+            <Link
+              to="/dashboard/upload-product"
+              className="py-1 hover:bg-orange-600 hover:text-white "
+            >
+              Upload Product
+            </Link>
+            <Link
+              to="/dashboard/category"
+              className="py-1 hover:bg-orange-600 hover:text-white "
+            >
+              Category
+            </Link>
+            <Link
+              to="/dashboard/sub-category"
+              className="py-1 hover:bg-orange-600 hover:text-white "
+            >
+              Sub-Category
+            </Link>
+          </>
+        ) : (
+          <></>
+        )}
+
         <Link
           to="/dashboard/orders"
           className="py-1 hover:bg-orange-600 hover:text-white "

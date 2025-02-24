@@ -22,7 +22,6 @@ import AdminPermission from "./pages/AdminPermission";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import DisplayProductPage from "./pages/DisplayProductPage";
 import "./index.css";
-import DisplayAllinCart from "./pages/DisplayAllinCart";
 import DisplayCart from "./pages/DisplayCart";
 import CheckOutPage from "./pages/CheckOutPage";
 import SuccessPage from "./pages/SuccessPage";

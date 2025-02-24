@@ -25,10 +25,9 @@ const OpenEditProduct = ({ close, datas, fetchProducts }) => {
     description: datas.discount,
     more_details: datas.more_details || {},
   });
-  console.log("tfgyt", datas);
+  // console.log("tfgyt", datas);
 
   const [iamge, setImage] = useState();
-  const [loading, setLoading] = useState(false);
   const [imageLoading, setImageLoading] = useState(false);
   const [viewImage, setViewImage] = useState(false);
   const [defaultSubCategory, setDefaultCategory] = useState();

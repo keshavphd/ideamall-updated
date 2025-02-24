@@ -21,9 +21,6 @@ import DisplayMobileCart from "../pages/DisplayMobileCart";
 const AppLayout = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-const user = useSelector(state=>state.user)
-console.log(user._id);
-
   const fetchCategory = async () => {
     try {
       dispatch(setLoadingCategory(true));
@@ -33,29 +30,31 @@ console.log(user._id);
       dispatch(setLoadingCategory(false));
     }
   };
+  const value = (localStorage.getItem("accessToken") != null);
+  const loggedIn = value;
 
   const getSubCategories = async () => {
     try {
       dispatch(setLoadingCategory(true));
       const res = await getSubCategoryDetails();
       dispatch(setAllSubCategory(res.data.data));
-      // console.log("Sub", res.data.data);
     } catch (error) {
       dispatch(setLoadingCategory(false));
     }
   };
   const fetchUser = async () => {
     const userData = await getUserDetails();
-    // console.log("user", userData.data.data);
     dispatch(setUserDetails(userData.data.data));
   };
+  // console.log("isLoog",loggedIn);
+  
   useEffect(() => {
-    if(user._id){
+    if(loggedIn){
       fetchUser();
     }
     fetchCategory();
     getSubCategories();
-  }, []);
+  }, [value]);
 
   return (
     <GlobalProvider>
