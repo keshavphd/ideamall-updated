@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 import bcrypt from "bcryptjs";
-import VerifyEmailTemplate from "../Template/VerifyEmailTemplate.js";
+import VerifyEmailTemplate from "../Template/verifyEmailTemplate.js";
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 import sendEmail from "../configuration/sendEmail.js";

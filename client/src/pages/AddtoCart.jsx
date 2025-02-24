@@ -6,6 +6,7 @@ import AxiosToastError from "../utils/AxiosToastError";
 import Loading from "./Loading";
 import { useSelector } from "react-redux";
 import { FaMinus, FaPlus } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 const AddtoCart = ({ data }) => {
   const [loading, setLoading] = useState(false);
@@ -14,6 +15,7 @@ const AddtoCart = ({ data }) => {
   const [quantity, setQuantity] = useState(0);
   const [cartItemDetail, setCartItemDetail] = useState();
   const { fetchCartItems, updateCardItems,deleteCartQuantitys } = useGlobalContext();
+  const navigate = useNavigate()
   const handleAddtoCrt = async (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -26,13 +28,15 @@ const AddtoCart = ({ data }) => {
         },
       });
       if (res.data.success) {
-        toast.success(res.data.msg);
         if (fetchCartItems) {
           fetchCartItems();
         }
+        toast.success(res.data.msg);
+        
       }
     } catch (error) {
-      AxiosToastError(error);
+     toast("Please login")
+     navigate("/login")
     } finally {
       setLoading(false);
     }
@@ -51,12 +55,20 @@ const AddtoCart = ({ data }) => {
   }, [data, cartItem]);
 
   const increaseQuantity = async(e) => {
-    e.preventDefault();
+    try {
+      setLoading(true)
+      e.preventDefault();
     e.stopPropagation();
     const res = await updateCardItems(cartItemDetail?._id, quantity + 1);
     if(res.success){
       toast.success("Item added")
     }
+    } catch (error) {
+      AxiosToastError(error)
+    }finally {
+      setLoading(false);
+    }
+    
   };
   const decreaseQuantity = async(e) => {
     e.preventDefault();
@@ -80,7 +92,7 @@ const AddtoCart = ({ data }) => {
           >
             <FaMinus />
           </button>
-          <p className="px-1 text-center">{quantity}</p>
+          <p className="px-1 text-center"> {loading ? <Loading /> : quantity}</p>
           <button
             onClick={increaseQuantity}
             className="p-1 bg-orange-400 rounded"

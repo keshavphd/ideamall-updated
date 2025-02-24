@@ -11,10 +11,13 @@ const Search = () => {
   const [isSearchPage, setIsSearchPage] = useState(false);
   const [isMobile] = useMobile();
   const searchTxet = location.search.slice(3)
+  // console.log("guyg",location);
+  
   useEffect(() => {
     const isSearch = location.pathname === "/search";
     setIsSearchPage(isSearch);
   }, [location]);
+console.log("search-useMobile",isMobile);
 
   const redirectToSearchPage = () => {
     navigate("/search");
@@ -79,7 +82,7 @@ const Search = () => {
           <div className="w-full h-full">
             <input
               type="text"
-              placeholder=" Serch for Atta,Dal ans more...."
+              placeholder=" Search for Atta,Dal ans more...."
               className="w-full h-full px-0 text-black bg-transparent outline-none"
               autoFocus
               defaultValue={searchTxet}

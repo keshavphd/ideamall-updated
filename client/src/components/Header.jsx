@@ -41,6 +41,7 @@ const Header = () => {
   };
 
   const isSearchPage = location.pathname === "/search";
+console.log("dfff",isSearchPage);
 
   useEffect(() => {
     const handleOutsideClick = (e) => {
@@ -54,7 +55,7 @@ const Header = () => {
       document.removeEventListener("click", handleOutsideClick);
     };
   }, [content]);
-
+  console.log("isMobile", isMobile);
   // useEffect(()=>{
   //  const quantity = cartItems.reduce((prev,curr)=>{
   //      return prev+curr.quantity
@@ -70,12 +71,12 @@ const Header = () => {
   // },[cartItems])
 
   return (
-    <>
+    
       <header
         className={
           isSearchPage && isMobile
-            ? "sticky top-0 z-20 flex flex-col justify-center w-full h-12 p-1 bg-orange-300 "
-            : "sticky top-0 flex z-20 flex-col justify-center w-full h-20 gap-1 px-2 bg-orange-300 lg:px-5 lg:items-center"
+            ? "sticky top-0 z-20 flex flex-col h-12 p-1 bg-orange-300 justify-between"
+            : "sticky top-0 flex z-20 flex-col justify-center h-20 gap-1 px-2 bg-orange-300 lg:px-5 lg:items-center"
         }
       >
         {!(isSearchPage && isMobile) && (
@@ -85,7 +86,7 @@ const Header = () => {
                 src={logo}
                 alt="Company Image"
                 height={40}
-                width={200}
+                width={250}
                 className="hidden lg:block"
               />
               <img
@@ -187,7 +188,7 @@ const Header = () => {
         </div>
         {cartOpen && <DisplayCart close={()=>setCartOpen(false)} />}
       </header>
-    </>
+    
   );
 };
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import UserProfilePhotoEdit from "./userProfilePhotoEdit";
+
 import { PiUserLight } from "react-icons/pi";
 import { GoEyeClosed } from "react-icons/go";
 import { IoEye } from "react-icons/io5";
@@ -8,6 +8,7 @@ import SummaryAPI, { Axios } from "../utils/axios";
 import AxiosToastError from "../utils/AxiosToastError";
 import toast from "react-hot-toast";
 import { setUserDetails } from "../app/userSlice";
+import UserProfilePhotoEdit from "./userProfilePhotoEdit";
 
 const UserProfile = () => {
   const user = useSelector((state) => state?.user);

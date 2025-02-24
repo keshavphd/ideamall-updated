@@ -139,7 +139,7 @@ const SummaryAPI = {
     method: "get",
   },
   updateCartQuantity: {
-    url: "/api/cart//update-quantity",
+    url: "/api/cart/update-quantity",
     method: "put",
   },
   deleteCartQuantity: {

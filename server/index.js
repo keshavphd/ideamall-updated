@@ -9,11 +9,10 @@ import subCategoryRouter from "./router/subCategoryRouter.js";
 import productRouter from "./router/uploadProductRouter.js";
 import cartRouter from "./router/cartRouter.js";
 import addressRouter from "./router/addressRouter.js";
-import orderRouter from "./router/orderRouter.js"
+import orderRouter from "./router/orderRouter.js";
 import database from "./utils/database.js";
 
-
-const PORT = 2000;
+const PORT = process.env.PORT;
 const app = express();
 
 const corsOptions = {
@@ -42,13 +41,18 @@ app.use(
     "Method is = :method , Status is = :status , Response time is = :response-time ms , Date is = :current-date "
   )
 );
+app.get("/", (req, res) => {
+  res.json({
+    port: "server is running on " + PORT,
+  });
+});
 app.use("/api/auth", authRouter);
 app.use("/api/category", categoryRouter);
 app.use("/api/subcategory", subCategoryRouter);
 app.use("/api/product", productRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/address", addressRouter);
-app.use("/api/order",orderRouter)
+app.use("/api/order", orderRouter);
 
 database().then(() => {
   app.listen(PORT, () => {

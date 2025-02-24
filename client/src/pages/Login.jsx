@@ -49,7 +49,7 @@ const Login = () => {
         );
         // console.log("retgr",response.data.userToken.accessToken);
         localStorage.setItem("mytime", Date.now()); 
-        const d = localStorage.getItem("mytime"); 
+        localStorage.getItem("mytime"); 
         localStorage.setItem(
           "refreshToken",
           response.data.userToken.refreshToken

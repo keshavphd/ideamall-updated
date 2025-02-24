@@ -3,36 +3,31 @@ import { Outlet, useLocation } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import SummaryAPI, {
-  Axios,
+import {
   getCategoryDetails,
   getSubCategoryDetails,
   getUserDetails,
 } from "../utils/axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserDetails } from "../app/userSlice";
-import AxiosToastError from "../utils/AxiosToastError";
-import { handleAddCart } from "./../app/cartSlice";
 import {
   setAllCategory,
   setAllSubCategory,
   setLoadingCategory,
 } from "../app/productSlice";
-import GlobalProvider, { useGlobalContext } from "../provider/GlobalProvider";
-import { FaShoppingCart } from "react-icons/fa";
-import DisplayPriceinRuppee from "../pages/DisplayPriceinRuppee";
-import DisplayMobileCart from "../pages/displayMobileCart";
+import GlobalProvider from "../provider/GlobalProvider";
+import DisplayMobileCart from "../pages/DisplayMobileCart";
 
 const AppLayout = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-
+const user = useSelector(state=>state.user)
+console.log(user._id);
 
   const fetchCategory = async () => {
     try {
       dispatch(setLoadingCategory(true));
       const categoryData = await getCategoryDetails();
-      // console.log("Category", categoryData.data.data);
       dispatch(setAllCategory(categoryData.data.data));
     } catch (error) {
       dispatch(setLoadingCategory(false));
@@ -41,11 +36,12 @@ const AppLayout = () => {
 
   const getSubCategories = async () => {
     try {
+      dispatch(setLoadingCategory(true));
       const res = await getSubCategoryDetails();
       dispatch(setAllSubCategory(res.data.data));
       // console.log("Sub", res.data.data);
     } catch (error) {
-      AxiosToastError(error);
+      dispatch(setLoadingCategory(false));
     }
   };
   const fetchUser = async () => {
@@ -54,7 +50,9 @@ const AppLayout = () => {
     dispatch(setUserDetails(userData.data.data));
   };
   useEffect(() => {
-    fetchUser();
+    if(user._id){
+      fetchUser();
+    }
     fetchCategory();
     getSubCategories();
   }, []);

@@ -11,7 +11,7 @@ import toast from "react-hot-toast";
 const DisplayCart = ({ close }) => {
   const navigate = useNavigate();
   const { totalPrice, totalQuantity } = useGlobalContext();
-  const cartItems = useSelector((state) => state?.cart.cart);
+  const cartItems = useSelector((state) => state?.cart?.cart);
   //   console.log("sfg", cartItems);
   const userLogged = useSelector((state) => state?.user);
   // console.log("ufgtr", userLogged);
@@ -65,7 +65,7 @@ const DisplayCart = ({ close }) => {
                         {items?.productId?.name}
                       </p>
                       <p className="text-sm lg:text-xs text-neutral-500">
-                        {items.productId.unit} Unit
+                        {items?.productId?.unit} Unit
                       </p>
                       <p className="font-semibold">
                         {DisplayPriceinRuppee(items?.productId?.price)}

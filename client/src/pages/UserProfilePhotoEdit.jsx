@@ -5,6 +5,7 @@ import SummaryAPI, { Axios } from "../utils/axios";
 import AxiosToastError from "../utils/AxiosToastError";
 import { updateAvatar } from "../app/userSlice";
 import { PiUserLight } from "react-icons/pi";
+
 const UserProfilePhotoEdit = ({ close }) => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
