@@ -77,7 +77,6 @@ const GlobalProvider = ({ children }) => {
       }
     } catch (error) {
       console.log(error);
-      
     }
   };
 
@@ -86,26 +85,27 @@ const GlobalProvider = ({ children }) => {
     dispatch(handleAddCart([]));
   };
 
-  const fetchORder = async()=>{
+  const fetchORder = async () => {
     try {
       const res = await Axios({
         ...SummaryAPI.getOrdersDetails,
-      })
+      });
       // console.log("res",res);
-      if(res.data.success){
-        dispatch(setOredrs(res.data.data))
+      if (res.data.success) {
+        dispatch(setOredrs(res.data.data));
       }
     } catch (error) {
       console.log(error);
-      
     }
-  }
+  };
 
   useEffect(() => {
-    fetchORder()
-    fetchCartItems();
-    handleLogout();
-    fetchAllAddress();
+    if (user.name) {
+      fetchORder();
+      fetchCartItems();
+      // handleLogout();
+      fetchAllAddress();
+    }
   }, [user]);
 
   useEffect(() => {
