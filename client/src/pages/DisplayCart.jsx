@@ -40,7 +40,7 @@ const DisplayCart = ({ close }) => {
           </button>
         </div>
 
-        <div className="min-h-[86vh] lg:min-h-[80vh] h-full p-2 flex flex-col gap-3 bg-orange-100 max-h-[calc(100vh-150px)]">
+        <div className="min-h-[80vh] lg:min-h-[80vh] h-full p-2 flex flex-col gap-3 bg-orange-100 max-h-[calc(100vh-150px)]">
           <div className="flex items-center justify-between px-4 py-2 text-blue-600 bg-blue-100 rounded-full">
             <p>Your Total savings</p>
             <p>{DisplayPriceinRuppee(totalPrice * 0.135)}</p>
@@ -82,7 +82,7 @@ const DisplayCart = ({ close }) => {
                 <img src="https://i.imgur.com/gSJ3hXx.jpeg" alt="Cart Image" />
                 <div className="flex justify-center w-full text-center">
                   <Link
-                    onClick={close}
+                    onClick={()=>navigate("/")}
                     className="flex justify-center p-2 font-semibold text-center bg-orange-400 w-fit text-neutral-50"
                   >
                     Shop Now
@@ -127,7 +127,7 @@ const DisplayCart = ({ close }) => {
         </div>
         {cartItems[0] && (
           <div className="p-2">
-            <div className="sticky flex items-center justify-between px-4 py-2 font-semibold bg-orange-700 rounded text-neutral-50 bottom-2">
+            <div className="sticky flex items-center justify-between px-4 py-2 font-semibold bg-orange-700 rounded text-neutral-50 bottom-20">
               <div>{DisplayPriceinRuppee(totalPrice)}</div>
               <button
                 onClick={redirectToChekout}

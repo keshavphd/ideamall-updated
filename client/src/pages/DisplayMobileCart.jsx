@@ -17,16 +17,19 @@ const DisplayMobileCart = () => {
             <div className="flex items-center justify-between gap-10 px-2 py-1 text-sm bg-orange-500 rounded lg:hidden text-neutral-100">
               <div className="flex items-center gap-2">
                 <div className="p-2 bg-orange-600 rounded w-fit">
-                  <FaShoppingCart />
+                  <FaShoppingCart size={26}/>
                 </div>
                 <div className="text-xs">
                   <p>{totalQuantity} items</p>
                   <p>{DisplayPriceinRuppee(totalPrice)}</p>
                 </div>
               </div>
-              <Link to={"/cart"} className="flex items-center gap-1">
-                <span className="text-sm">View Cart</span>
+              <Link to={"/cart"} className="flex flex-row items-center justify-center gap-1">
+                <span className="text-base font-semibold">View Cart</span>
+                <span className="mt-1">
                 <FaCaretRight />
+                </span>
+                
               </Link>
             </div>
           </div>)
