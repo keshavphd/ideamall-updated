@@ -167,7 +167,7 @@ const Header = () => {
                   </button>
                 </div>
               ) : (
-                <div className="ml-auto">
+                <div className="flex justify-items-end">
                   <button onClick={handleLogin}>
                     <FaUser size={26} className="block lg:hidden" />
                   </button>
