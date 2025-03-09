@@ -90,7 +90,7 @@ userSchema.pre("save", async function (next) {
     const saltRound = await bcrypt.genSalt(10);
     const hash_password = await bcrypt.hash(user.password, saltRound);
     user.password = hash_password;
-    const verifyEmailUrl = `$(process.env.FRONTEND_URL)/verify-email?code=${user._id}`;
+    const verifyEmailUrl = `${process.env.FRONTEND_URL}/verify-email?code=${user._id}`;
 
     sendEmail({
       subject: "Verify email from IdeaMall",
